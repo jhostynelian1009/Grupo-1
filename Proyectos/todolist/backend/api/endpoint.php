@@ -1,7 +1,5 @@
 <?php 
 include '../query/consultas.php';
-
-// Asegurar que la respuesta sea JSON
 header('Content-Type: application/json');
 
 class endpoint{

@@ -4,32 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-     <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-        <!-- SweetAlert2 CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
     <div class="container cont_todolist">
         <h1 class="text-center">AGREGAR OBSERVACIÓN</h1>
-     <a href="index.html" class="btn btn-primary">Regresar al index</a>
-  
-     <div class="container fomulario_actividad" >
-        <form action="" method="post" id="formulario_agregar_observacion">
-            <div class="form-group">
-                <label for="observacion">Observación</label>
-                <input type="text" class="form-control" id="observacion" name="observacion" required>
-            </div>
-           
-            <button type="submit" class="btn btn-primary">Agregar Observación</button>
-        </form>
-     </div>
+        <a href="index.html" class="btn btn-primary mb-3">Regresar al index</a>
+
+        <div class="container formulario_actividad">
+            <form action="" method="post" id="formulario_agregar_observacion">
+                <div class="form-group mb-3">
+                    <label for="observacion">Observación</label>
+                    <input type="text" class="form-control" id="observacion" name="observacion" required>
+                </div>
+                
+                <!-- Botones de acción -->
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Agregar Observación</button>
+                    <button type="button" class="btn btn-danger" id="btn_eliminar_observacion">Eliminar Observación</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <script src="js/jquery-3.7.1.min.js" ></script>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="css/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/main.js"></script>
-    
+
+    <script>
+        document.getElementById("btn_eliminar_observacion").addEventListener("click", () => {
+            Swal.fire({
+                title: "¿Eliminar observación?",
+                text: "Esta acción no se puede deshacer",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire("Eliminada", "La observación ha sido eliminada.", "success");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@ class Conexion {
     public static function conectar() {
         $host = "localhost";
         $usuario = "root";
-        $contraseña = ""; // si tu MySQL usa clave déjala vacía
+        $contraseña = "";
         $bd = "db_actividades";
 
         try {

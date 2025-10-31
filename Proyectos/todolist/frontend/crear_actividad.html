@@ -1,51 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>  
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Todo List</title>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-        <!-- SweetAlert2 CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    </head>
-    <body>
-        <div class="container cont_todolist">
-            <h1 class="text-center">CREAR ACTIVIDAD</h1>
-         <a href="index.html" class="btn btn-primary">Regresar al index</a>
-      
-         <div class="container fomulario_actividad" >
-            <form action="" method="post" id="formulario_crear_actividad">
-                <div class="form-group">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List - Crear Actividad</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+
+<body>
+    <div class="container cont_todolist mt-5">
+        <h1 class="text-center mb-4">CREAR ACTIVIDAD</h1>
+        <a href="index.html" class="btn btn-primary mb-3">Regresar al inicio</a>
+
+        <div class="alert alert-info text-center">
+            Completa los campos para registrar una nueva actividad.
+        </div>
+
+        <div class="container formulario_actividad p-4 border rounded bg-light shadow-sm">
+            <form id="formulario_crear_actividad">
+                <div class="form-group mb-3">
                     <label for="actividad">Actividad</label>
                     <input type="text" class="form-control" id="actividad" name="actividad" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="descripcion">Descripción</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="estado">Estado</label>
-                   <select name="estado" id="estado" class="form-control">
-                    <option value="1">Completado</option>
-                    <option value="0">Pendiente</option>
-                    <option value="2">En progreso</option>
-                   </select>
+                    <select name="estado" id="estado" class="form-control" required>
+                        <option value="" selected disabled>Selecciona un estado</option>
+                        <option value="1">Completado</option>
+                        <option value="0">Pendiente</option>
+                        <option value="2">En progreso</option>
+                    </select>
                 </div>
-               
-                <button type="submit" class="btn btn-primary">Crear Actividad</button>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success me-2">Crear Actividad</button>
+                    <button type="reset" class="btn btn-warning">Limpiar</button>
+                </div>
             </form>
-         </div>
         </div>
-        <script src="js/jquery-3.7.1.min.js" ></script>
-        <script src="css/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-        <!-- SweetAlert2 JS -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="js/main.js"></script>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="css/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            CrearActividad();
+        // Escuchar el envío del formulario
+        document.getElementById("formulario_crear_actividad").addEventListener("submit", function(e) {
+            e.preventDefault(); // Evita el envío tradicional
+
+            const formData = new FormData(this);
+
+            Swal.fire({
+                title: "¿Crear nueva actividad?",
+                text: "Confirma que deseas guardar esta actividad.",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Sí, crear",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch("backend/api/crear_actividad.php", {
+                        method: "POST",
+                        body: formData
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire("Éxito", data.message, "success");
+                            document.getElementById("formulario_crear_actividad").reset(); // Limpia los campos
+                        } else {
+                            Swal.fire("Error", data.message, "error");
+                        }
+                    })
+                    .catch(() => {
+                        Swal.fire("Error", "No se pudo conectar con el servidor.", "error");
+                    });
+                }
+            });
         });
     </script>
-    </body>
+</body>
 </html>
+
