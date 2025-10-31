@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo List</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+        <!-- SweetAlert2 CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    </head>
+    <body>
+        <div class="container cont_todolist">
+            <h1 class="text-center">LISTAS DE ACTIVIDADES </h1>
+         <a href="crear_actividad.html" class="btn btn-primary">Agregar Actividad</a>
+        <table class="table table-dark table-striped" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Actividad</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Fecha de Creación</th>
+                    <th>Fecha de Actualización</th>
+                    <th>Ver</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+              
+            </tbody>
+        </table>
+        
+        </div>
+        <script src="js/jquery-3.7.1.min.js" ></script>
+        <script src="css/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SweetAlert2 JS -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            MostrarActividad();
+        });
+    </script>
+    </body>
+</html>

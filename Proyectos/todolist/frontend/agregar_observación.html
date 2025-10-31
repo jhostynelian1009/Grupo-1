@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+     <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+        <!-- SweetAlert2 CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <div class="container cont_todolist">
+        <h1 class="text-center">AGREGAR OBSERVACIÓN</h1>
+     <a href="index.html" class="btn btn-primary">Regresar al index</a>
+  
+     <div class="container fomulario_actividad" >
+        <form action="" method="post" id="formulario_agregar_observacion">
+            <div class="form-group">
+                <label for="observacion">Observación</label>
+                <input type="text" class="form-control" id="observacion" name="observacion" required>
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Agregar Observación</button>
+        </form>
+     </div>
+    </div>
+    <script src="js/jquery-3.7.1.min.js" ></script>
+    <script src="css/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/main.js"></script>
+    
+</body>
+</html>
