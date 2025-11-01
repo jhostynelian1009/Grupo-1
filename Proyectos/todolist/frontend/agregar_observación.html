@@ -6,7 +6,7 @@
     <title>Todo List</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap-5.3.8-dist/css/bootstrap.min.css">
-    <!-- SweetAlert2 CSS -->
+  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
@@ -20,8 +20,6 @@
                     <label for="observacion">Observación</label>
                     <input type="text" class="form-control" id="observacion" name="observacion" required>
                 </div>
-                
-                <!-- Botones de acción -->
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">Agregar Observación</button>
                     <button type="button" class="btn btn-danger" id="btn_eliminar_observacion">Eliminar Observación</button>
@@ -32,10 +30,8 @@
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="css/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-    <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/main.js"></script>
-
     <script>
         document.getElementById("btn_eliminar_observacion").addEventListener("click", () => {
             Swal.fire({

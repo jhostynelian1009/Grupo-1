@@ -32,7 +32,7 @@ class endpoint{
         } 
         else if($_SERVER['REQUEST_METHOD'] == 'DELETE')
         {
-            // Para DELETE, los datos vienen en el cuerpo de la petición
+           
             parse_str(file_get_contents("php://input"), $_DELETE);
             if(isset($_DELETE['eliminar_actividad_deletemethod'])){
                 echo consultas::eliminarActividad($_DELETE['id']);

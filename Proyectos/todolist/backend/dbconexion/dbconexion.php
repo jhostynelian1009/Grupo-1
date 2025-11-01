@@ -1,21 +1,19 @@
 <?php
-class dbactividades {
-    private static $host = "localhost";     
-    private static $dbname = "db_actividades"; 
-    private static $user = "root";            
-    private static $pass = "";                
-
+class dbconexion {
     public static function conectar() {
         try {
-            $conexion = new PDO(
-                "mysql:host=" . self::$host . ";dbname=" . self::$dbname,
-                self::$user,
-                self::$pass
-            );
-            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $conexion;
+            $host = "localhost";
+            $user = "root";
+            $password = "";
+            $database = "dbactividades";
+
+            $conn = new PDO("mysql:host=$host;dbname=$database", $user, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $conn;
+
         } catch (PDOException $e) {
-            die("❌ Error de conexión: " . $e->getMessage());
+            echo "Error de conexión: " . $e->getMessage();
         }
     }
 }

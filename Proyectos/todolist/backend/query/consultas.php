@@ -64,7 +64,7 @@ class consultas {
 
     // FUNCION OBTENER ACTIVIDAD POR ID
     public static function obtenerActividadPorId($id) {
-        $conn = dbactividades::conectar(); // 🔧 corregido (antes tenías db_actividades)
+        $conn = dbactividades::conectar(); 
         $query = "SELECT * FROM actividades WHERE id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(1, $id);
@@ -80,7 +80,7 @@ class consultas {
 
     // FUNCION AGREGAR OBSERVACION
     public static function agregarObservacion($id, $observacion) {
-        $conn = dbactividades::conectar(); // 🔧 corregido (antes tenías db_actividades)
+        $conn = dbactividades::conectar(); 
         $query = "UPDATE actividades SET observacion = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(1, $observacion);

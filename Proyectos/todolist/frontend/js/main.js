@@ -1,8 +1,6 @@
-// Función para enviar el formulario mediante AJAX
 $(document).ready(function() {
     $('#formulario_crear_actividad').submit(function(e) {
-        e.preventDefault(); // Evita que recargue la página
-
+        e.preventDefault(); 
         var form = $(this);
         $.ajax({
             url: form.attr('action'),
